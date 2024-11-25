@@ -2,7 +2,7 @@ name: node_app
 
 on:
     push:
-          branches:
+        branches:
               -"main"
 jobs:
     build:
@@ -28,7 +28,7 @@ jobs:
                     context: .
                     File: ./Dockerfile
                     push: true
-                    tags: ${{ secrets.DOCEKRHUB_USERNAME }}/clockbox:latest
+                    tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
             
         
                   
