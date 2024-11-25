@@ -1,4 +1,4 @@
-name: nodejs_app
+name: nodejs_code
 
 on:
     push:
