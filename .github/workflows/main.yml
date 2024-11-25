@@ -1,0 +1,37 @@
+
+
+name: node_app
+
+on:
+    push:
+          branches:
+              -"main"
+jobs:
+    build:
+        name: Builf Docker image
+        runs-on: ubuntu-latest
+        steps:
+            -
+                  name: Checkout
+                  uses: actions/checkout@v3
+            -
+                  name: Login ot Docker Hub
+                  uses: dacker/login-action@v2
+                  with:
+                    username: ${{ secrets.DOCKERHUB_USERNAME }}
+                    password: ${{ secrets.DOCKERHUB_TOKEN }}
+            -
+                  name: Set up Docker Buildx
+                  uses: docker/setup-buildx-action@v2
+            -
+                  name: Build adn push
+                  uses: docker/build-push-action@v4
+                  with:
+                    context: .
+                    File: ./Dockerfile
+                    push: true
+                    tags: ${{ secrets.DOCEKRHUB_USERNAME }}/clockbox:latest
+            
+        
+                  
+        
